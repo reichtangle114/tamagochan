@@ -5,8 +5,8 @@ import { auth } from "../firebase_criant.js"
 import db from "../firebase_criant.js"
 
 export default function Mainpage() {
-    let [mail, setmail] = useState("");
-    let [userName, setuserName] = useState("");
+    let [mail, setmail] = useState("未ログイン");
+    let [userName, setuserName] = useState("未ログイン");
 
     useEffect(() => {
         const user = auth.currentUser;
@@ -17,10 +17,20 @@ export default function Mainpage() {
             let uid = user.uid
             console.log(uid)
 
-            const docRef = doc(db, "cities", "SF");
-            const docSnap = getDoc(docRef);
-            setuserName(docSnap)
-        }}, []
+            const get = async () => {
+                const docRef = doc(db, "users", uid);
+                const docSnap = await getDoc(docRef);
+                
+                if (docSnap.exists()) {
+                    console.log(docSnap.data());
+                }else{
+                  console.log("No such document!");
+                };
+              };
+            
+            setuserName(get)
+          };
+        }, []
     );
 
     return (
