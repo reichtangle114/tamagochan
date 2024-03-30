@@ -4,7 +4,7 @@ import { auth } from "../firebase_criant.js"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from 'next/navigation'
 
-export default function login() {
+export default function Login() {
     const [mail, setmail] = useState("");
     const [pass, setpass] = useState("");
     const router = useRouter()
@@ -27,11 +27,26 @@ export default function login() {
 
     return (
         <>
+    メールアドレス
+    <br></br>
     <input id="test" className='kuromoji' type="text" value={mail} onChange={(event) => { setmail(event.target.value) }} />
+    <br></br>
+    パスワード
+    <br></br>
     <input id="test" className='kuromoji' type="password" value={pass} onChange={(event) => { setpass(event.target.value) }} />
-    <button type="button" onClick={submit}>ログイン</button>
+    <br></br>
+    <button type="button" className='fuchi' onClick={submit}>ログイン</button>
     <style>{`.kuromoji{color: black;}
-                .otameshi{margin: 30px 15px;}`}</style>
+             .fuchi{
+                padding: 0.5em 1em;
+                margin: 2em 0;
+                font-weight: bold;
+                color: #6091d3;
+                background: #FFF;
+                border: solid 3px #6091d3;
+                border-radius: 10px;
+            }
+            `}</style>
         </>
     )
 }

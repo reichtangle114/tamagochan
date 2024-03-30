@@ -1,24 +1,24 @@
 'use client'
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import { auth } from "../firebase_criant.js"
 
-export default function mainpage() {
+export default function Mainpage() {
     let [jyouhou, setjyouhou] = useState("");
 
-    const useUser = () => {
+    useEffect(() => {
         const user = auth.currentUser;
         console.log(auth)
         if (user !== null) {
             const email = user.email;
             setjyouhou(email)
-        }
-      };
+        }}
+    );
+
     return (
         <>
+            <header>{jyouhou}</header>
             ログインしました。
             <br></br>
-            <button type="button" onClick={useUser}>表示</button>
-            {jyouhou}
         </>
     )
 }
