@@ -29,11 +29,11 @@ export default function Login() {
         <>
     メールアドレス
     <br></br>
-    <input id="test" className='kuromoji' type="text" value={mail} onChange={(event) => { setmail(event.target.value) }} />
+    <input id="mail" className='kuromoji' type="text" value={mail} onChange={(event) => { setmail(event.target.value) }} />
     <br></br>
     パスワード
     <br></br>
-    <input id="test" className='kuromoji' type="password" value={pass} onChange={(event) => { setpass(event.target.value) }} />
+    <input id="password" className='kuromoji' type="password" value={pass} onChange={(event) => { setpass(event.target.value) }} />
     <br></br>
     <button type="button" className='fuchi' onClick={submit}>ログイン</button>
     <style>{`.kuromoji{color: black;}

@@ -1,6 +1,7 @@
 'use client'
 import { useState } from "react"
-import { auth,db } from "../firebase_criant.js"
+import { auth} from "../firebase_criant.js"
+import db from "../firebase_criant.js"
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore"; 
 
@@ -18,13 +19,9 @@ export default function Singup() {
                 const user = userCredential.user;
                 if(user) {
                   const uid = user.uid
-                  const userInitialData = {
-                    mail: mail,
-                    uid: uid,
-                    userName: userName
-                  }
+
                   console.log(uid)
-                  setDoc(doc(db,"users",uid ),{userInitialData});
+                  setDoc(doc(db,"users",uid ),{userName: userName});
                 }
               })
               .catch((error) => {
